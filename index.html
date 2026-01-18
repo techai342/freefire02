@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Eman - Free Fire Official Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&display=swap');
+        
+        :root {
+            --ff-orange: #f97316;
+            --ff-yellow: #facc15;
+            --ff-purple: #9333ea;
+            --ff-blue: #2563eb;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            background: #000;
+            color: white;
+            min-height: 100vh;
+        }
+
+        .bg-animate {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(-45deg, #4b0082, #00008b, #00ced1, #ff00ff, #0f172a);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .ff-font {
+            font-family: 'Bebas+Neue', cursive;
+            letter-spacing: 2px;
+        }
+
+        .profile-container {
+            position: relative;
+            margin-top: -70px;
+            z-index: 10;
+        }
+
+        .profile-img-wrapper {
+            position: relative;
+            padding: 3px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+            background-size: 400%;
+            animation: moveGradient 8s linear infinite;
+        }
+
+        @keyframes moveGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .profile-img-circle {
+            width: 130px;
+            height: 130px;
+            border: 3px solid #000;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: #0f172a;
+        }
+        
+        @media (min-width: 640px) {
+            .profile-img-circle {
+                width: 170px;
+                height: 170px;
+            }
+        }
+
+        .glass-card {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+        }
+
+        .ff-gradient {
+            background: linear-gradient(135deg, #fff 0%, #facc15 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-ff {
+            background: linear-gradient(45deg, #f97316, #facc15);
+            box-shadow: 0 4px 20px rgba(249, 115, 22, 0.4);
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.3s ease;
+        }
+        .btn-ff:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(249, 115, 22, 0.6);
+        }
+
+        .custom-notice-box {
+            position: relative;
+            padding: 20px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%);
+            border-left: 5px solid #facc15;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        
+        .custom-notice-box::before {
+            content: 'LIVE';
+            position: absolute;
+            top: 10px;
+            right: -20px;
+            background: #ff0000;
+            color: white;
+            font-size: 10px;
+            font-weight: 800;
+            padding: 2px 30px;
+            transform: rotate(45deg);
+            box-shadow: 0 0 10px #ff0000;
+            animation: pulse-red 2s infinite;
+        }
+
+        @keyframes pulse-red {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .time-badge {
+            display: inline-block;
+            background: rgba(250, 204, 21, 0.15);
+            border: 1px solid #facc15;
+            color: #facc15;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-family: 'Bebas Neue', cursive;
+            letter-spacing: 1px;
+            font-size: 18px;
+        }
+
+        /* Tournament Section - Detailed View */
+        .tourney-card {
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            transition: 0.3s;
+        }
+        .tourney-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 2px solid #facc15;
+        }
+        .tourney-details {
+            padding: 20px;
+        }
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .detail-label {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .detail-value {
+            color: #facc15;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 20px;
+            letter-spacing: 1px;
+        }
+        .rules-box {
+            background: rgba(250, 204, 21, 0.05);
+            border: 1px dashed rgba(250, 204, 21, 0.3);
+            border-radius: 12px;
+            padding: 12px;
+            margin-top: 15px;
+        }
+        .rules-title {
+            color: #facc15;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            display: block;
+        }
+        .rules-list {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.7);
+            list-style: disc;
+            padding-left: 15px;
+        }
+
+        .wa-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25d366;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        @keyframes vibrate {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.05) rotate(1deg); }
+            50% { transform: scale(1) rotate(-1deg); }
+            75% { transform: scale(1.05) rotate(1deg); }
+            100% { transform: scale(1); }
+        }
+
+        .animate-vibrate {
+            animation: vibrate 2s infinite ease-in-out;
+        }
+
+        .mesh-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(rgba(255,255,255,0.05) 1.5px, transparent 1.5px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .stat-card:hover {
+            border-color: #facc15;
+            transform: scale(1.02);
+        }
+        .stat-icon {
+            font-size: 11px;
+            font-weight: 800;
+            color: #facc15;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 6px;
+            display: block;
+        }
+        .stat-value {
+            font-size: 28px;
+            font-weight: 800;
+            color: #fff;
+            font-family: 'Bebas Neue', cursive;
+        }
+
+        .social-pill {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 16px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+        }
+        .social-pill:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #facc15;
+        }
+        .icon-circle {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .cover-rgb-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+            background-size: 200% 100%;
+            animation: moveGradient 4s linear infinite;
+        }
+
+        #toast {
+            visibility: hidden;
+            min-width: 180px;
+            background-color: #facc15;
+            color: #000;
+            text-align: center;
+            border-radius: 50px;
+            padding: 10px 20px;
+            position: fixed;
+            z-index: 2000;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: 700;
+        }
+
+        #toast.show {
+            visibility: visible;
+            animation: fadein 0.4s ease, fadeout 0.4s ease 2.6s;
+        }
+
+        @keyframes fadein { from { transform: translate(-50%, 20px); opacity: 0; } to { transform: translate(-50%, 0); opacity: 1; } }
+        @keyframes fadeout { from { transform: translate(-50%, 0); opacity: 1; } to { transform: translate(-50%, 20px); opacity: 0; } }
+
+        /* Registration Modal Styling */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            padding: 20px;
+        }
+        .modal-content {
+            background: #111;
+            border: 2px solid #facc15;
+            border-radius: 30px;
+            width: 100%;
+            max-width: 400px;
+            padding: 30px;
+            box-shadow: 0 0 50px rgba(250, 204, 21, 0.2);
+            position: relative;
+        }
+        .modal-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 12px 16px;
+            color: white;
+            margin-bottom: 15px;
+            outline: none;
+            transition: 0.3s;
+        }
+        .modal-input:focus {
+            border-color: #facc15;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* AUTO PROMO POPUP STYLING */
+        .promo-popup {
+            position: fixed;
+            top: 20px;
+            right: -350px; /* Hidden by default */
+            width: 320px;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 4px solid #facc15;
+            border-radius: 16px;
+            padding: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            z-index: 9998;
+            transition: right 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .promo-popup.active {
+            right: 20px;
+        }
+
+        .promo-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .promo-content h4 {
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+            margin: 0;
+        }
+        
+        .promo-content p {
+            font-size: 11px;
+            color: rgba(255,255,255,0.6);
+            margin: 2px 0 8px 0;
+        }
+
+        .promo-btn {
+            font-size: 10px;
+            font-weight: bold;
+            padding: 4px 12px;
+            background: #facc15;
+            color: #000;
+            border-radius: 20px;
+            text-decoration: none;
+            text-transform: uppercase;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="bg-animate"></div>
+    <div class="mesh-overlay"></div>
+
+    <!-- AUTO PROMO POPUP CONTAINER -->
+    <div id="promoPopup" class="promo-popup">
+        <div id="promoIcon" class="promo-icon bg-gradient-to-br from-gray-800 to-black">
+            <!-- Icon injected by JS -->
+        </div>
+        <div class="promo-content">
+            <h4 id="promoTitle">Follow TikTok</h4>
+            <p id="promoSub">@mr_saqib_242</p>
+            <a id="promoLink" href="#" target="_blank" class="promo-btn">Check Now</a>
+        </div>
+        <button onclick="closePromo()" class="absolute top-2 right-2 text-white/30 hover:text-white">&times;</button>
+    </div>
+
+    <!-- Registration Modal -->
+    <div id="registerModal" class="modal-overlay">
+        <div class="modal-content">
+            <h2 class="ff-font text-3xl text-yellow-400 mb-2">Tournament Registration</h2>
+            <p class="text-[11px] text-white/50 uppercase tracking-widest mb-6">Enter details to join the battle</p>
+            
+            <div class="space-y-4">
+                <div>
+                    <label class="text-[10px] text-yellow-400 font-bold uppercase block mb-1">User Name</label>
+                    <input type="text" id="regName" class="modal-input" placeholder="Enter Game Name">
+                </div>
+                <div>
+                    <label class="text-[10px] text-yellow-400 font-bold uppercase block mb-1">User UID</label>
+                    <input type="text" id="regUid" class="modal-input" placeholder="Enter Free Fire UID">
+                </div>
+                <div>
+                    <label class="text-[10px] text-yellow-400 font-bold uppercase block mb-1">Other Details</label>
+                    <textarea id="regDetails" class="modal-input h-24" placeholder="Squad Name / Role etc."></textarea>
+                </div>
+                
+                <div class="flex gap-3">
+                    <button onclick="closeModal()" class="flex-1 py-3 rounded-xl border border-white/10 text-white text-sm font-bold uppercase tracking-wider">Cancel</button>
+                    <button onclick="submitRegistration()" class="flex-[2] btn-ff py-3 rounded-xl text-slate-900 font-bold uppercase tracking-wider">Submit Entry</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://chat.whatsapp.com/BmkeKATWZft1xKtMktxggK" target="_blank" class="wa-float animate-vibrate">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.06 3.973L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.601 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>
+        <span>JOIN</span>
+    </a>
+
+    <div id="toast">UID COPIED ⚔️</div>
+
+    <div class="w-full min-h-screen relative z-10">
+        <!-- Cover Photo -->
+        <div class="relative h-48 md:h-64 w-full overflow-hidden">
+            <img src="https://ik.imagekit.io/shaban/SHABAN-1768674422775_Uu0TqLuv3.jpg" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <div class="cover-rgb-line"></div>
+        </div>
+
+        <div class="max-w-screen-md mx-auto px-5 sm:px-8">
+            <!-- Profile Section -->
+            <div class="profile-container flex flex-col items-center sm:items-end sm:flex-row sm:gap-6">
+                <div class="profile-img-wrapper" data-aos="zoom-in">
+                    <img src="https://ik.imagekit.io/shaban/SHABAN-1768674591256_kPMNURVzz.jpg" class="profile-img-circle">
+                </div>
+
+                <div class="mt-4 text-center sm:text-left flex-1" data-aos="fade-up">
+                    <h1 class="text-3xl sm:text-5xl font-bold ff-font tracking-wider text-white">
+                        FREE FIRE <span class="ff-gradient">OFFICIAL</span>
+                    </h1>
+                    <div class="flex items-center justify-center sm:justify-start gap-2 mt-1">
+                        <span class="text-2xl sm:text-3xl font-bold text-yellow-400 tracking-widest uppercase">EMAN</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Area -->
+            <div class="mt-10 flex flex-col sm:flex-row gap-4" data-aos="fade-up">
+                <div onclick="copyUID()" class="cursor-pointer active:scale-95 transition-transform bg-white/5 backdrop-blur-md border border-white/10 p-1 pl-6 rounded-2xl flex items-center justify-between min-w-[180px]">
+                    <div class="flex flex-col">
+                        <span class="text-[9px] text-white/50 uppercase font-bold tracking-tighter">UID</span>
+                        <span id="uidText" class="font-mono font-bold text-yellow-400 text-lg">3458769</span>
+                    </div>
+                    <div class="p-3 bg-yellow-400/10 rounded-xl ml-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6a2 2 0 002-2V7a2 2 0 00-2-2h-6a2 2 0 00-2 2z" /></svg>
+                    </div>
+                </div>
+                
+                <!-- UPDATED WHATSAPP BUTTON -->
+                <a href="https://wa.me/923478936242?text=Hello%20eman" target="_blank" class="btn-ff flex-1 px-10 py-4 rounded-2xl font-bold text-slate-900 flex items-center justify-center gap-2 text-center">
+                    <span>Message Me</span>
+                </a>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="mt-10 glass-card p-6" data-aos="fade-up">
+                <h3 class="text-xs font-bold text-yellow-400 uppercase tracking-widest mb-5 flex justify-between items-center">Battle Stats <span class="text-white/40">S34</span></h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-icon">Current Rank</span>
+                        <span class="stat-value text-red-500">MASTER</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-icon">Account Level</span>
+                        <span class="stat-value text-yellow-400">Lv. 78</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-icon">Total Likes</span>
+                        <span class="stat-value text-pink-500">12.2K ❤️</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-icon">H.S. Rate</span>
+                        <span class="stat-value text-green-400">85%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Custom Match Notice Box -->
+            <div class="mt-8 custom-notice-box" data-aos="flip-up">
+                <div class="flex items-start gap-4">
+                    <div class="p-3 bg-yellow-400 rounded-2xl shadow-[0_0_15px_#facc15]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#000" viewBox="0 0 16 16"><path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/></svg>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="text-lg font-bold text-white ff-font tracking-wider">UPCOMING CUSTOM MATCH</h4>
+                        <div class="flex flex-wrap gap-4 items-center mt-3">
+                            <div>
+                                <span class="block text-[9px] text-yellow-400 uppercase font-bold mb-1">Match Time</span>
+                                <div class="time-badge">TODAY 12:00 PM</div>
+                            </div>
+                            <div>
+                                <span class="block text-[9px] text-white/50 uppercase font-bold mb-1">Map Detail</span>
+                                <div class="text-white font-bold text-sm tracking-widest uppercase">BERMUDA (4V4)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TOURNAMENT SECTION -->
+            <div class="mt-12" data-aos="fade-up">
+                <h3 class="text-xs font-bold text-indigo-300 uppercase tracking-[0.4em] mb-8 text-center">🏆 TOURNAMENT ARENA 🏆</h3>
+                
+                <!-- Tournament 1 -->
+                <div class="tourney-card">
+                    <img src="https://ik.imagekit.io/shaban/SHABAN-1768747107416_Gfq8n_mIZ.jpg" class="tourney-img" alt="Tournament Card 1">
+                    <div class="tourney-details">
+                        <h4 class="text-xl font-bold text-white ff-font tracking-wide mb-4">Elite Grand Championship</h4>
+                        
+                        <div class="detail-row">
+                            <span class="detail-label">Match Date</span>
+                            <span class="detail-value text-white">JAN 20, 2026</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Match Time</span>
+                            <span class="detail-value">08:00 PM</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Entry Fee</span>
+                            <span class="detail-value text-green-400">RS 1,200</span>
+                        </div>
+
+                        <div class="rules-box">
+                            <span class="rules-title">Match Rules</span>
+                            <ul class="rules-list">
+                                <li>No hack or script (Auto-ban)</li>
+                                <li>Squad registration only</li>
+                                <li>Screenshot must after the match</li>
+                                <li>Be present 10 mins before match starts</li>
+                            </ul>
+                        </div>
+                        <!-- Registration Trigger Button -->
+                        <button onclick="openModal()" class="w-full mt-6 btn-ff py-3 rounded-xl font-bold text-slate-900 uppercase tracking-widest flex items-center justify-center gap-2">
+                            <span>Register Now</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clip-rule="evenodd" /></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tournament 2 -->
+                <div class="tourney-card">
+                    <img src="https://ik.imagekit.io/shaban/SHABAN-1768747098486_wtinqrCOn.jpg" class="tourney-img" alt="Tournament Card 2">
+                    <div class="tourney-details">
+                        <h4 class="text-xl font-bold text-white ff-font tracking-wide mb-4">Squad Battle Royale Pro</h4>
+                        
+                        <div class="detail-row">
+                            <span class="detail-label">Match Date</span>
+                            <span class="detail-value text-white">JAN 22, 2026</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Match Time</span>
+                            <span class="detail-value">09:30 PM</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Entry Fee</span>
+                            <span class="detail-value text-green-400">RS 1,200</span>
+                        </div>
+
+                        <div class="rules-box">
+                            <span class="rules-title">Match Rules</span>
+                            <ul class="rules-list">
+                                <li>Standard Pro League rules apply</li>
+                                <li>No PC players allowed</li>
+                                <li>Map: Bermuda (Full Map)</li>
+                                <li>Minimum Level: 45+</li>
+                            </ul>
+                        </div>
+                        <!-- Registration Trigger Button -->
+                        <button onclick="openModal()" class="w-full mt-6 btn-ff py-3 rounded-xl font-bold text-slate-900 uppercase tracking-widest flex items-center justify-center gap-2">
+                            <span>Register Now</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clip-rule="evenodd" /></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Official Channels Section -->
+            <div class="mt-12 space-y-4" data-aos="fade-up">
+                <h3 class="text-xs font-bold text-indigo-300 uppercase tracking-[0.3em] mb-4 px-2">Official Channels</h3>
+                <a href="https://www.instagram.com/mr_saqib242/?igsh=MXVzdnN3aXRzc2U5Zg%3D%3D" target="_blank" class="social-pill">
+                    <div class="icon-circle bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600">
+                        <svg width="24" height="24" fill="white" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.947.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.947-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.947 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold text-white uppercase">Instagram</p>
+                        <p class="text-[10px] text-white/50">@mr_saqib242</p>
+                    </div>
+                </a>
+                <a href="https://www.youtube.com/@Saqib242saqib" target="_blank" class="social-pill">
+                    <div class="icon-circle bg-red-600">
+                        <svg width="24" height="24" fill="white" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 4-8 4z"/></svg>
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold text-white uppercase">YouTube</p>
+                        <p class="text-[10px] text-white/50">Saqib 242 Official</p>
+                    </div>
+                </a>
+                <a href="https://www.tiktok.com/@mr_saqib_242?_r=1&_t=ZS-939cWYJd2M0" target="_blank" class="social-pill">
+                    <div class="icon-circle bg-black border border-white/20">
+                        <svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.03 1.4-.2 2.81-.69 4.14-.52 1.45-1.44 2.81-2.73 3.69-1.28.91-2.84 1.4-4.41 1.4-1.54.03-3.1-.21-4.51-.87-1.44-.64-2.73-1.69-3.65-3.02-1-1.42-1.55-3.14-1.55-4.88 0-1.74.55-3.46 1.55-4.88.92-1.33 2.21-2.38 3.65-3.02 1.41-.66 2.97-.9 4.51-.87 1.15.03 2.3.24 3.37.69v4.32c-.7-.35-1.48-.54-2.27-.55-1.55-.03-3.04.56-4.04 1.76-1.01 1.2-1.42 2.77-1.13 4.3.29 1.53 1.28 2.88 2.68 3.55 1.38.65 3.03.55 4.31-.26 1.27-.81 1.95-2.31 2-3.8V.02z"/></svg>
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold text-white uppercase">TikTok</p>
+                        <p class="text-[10px] text-white/50">@mr_saqib_242</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="glass-card p-6 mt-10" data-aos="fade-up">
+                <h3 class="text-xs font-bold text-yellow-400 uppercase tracking-widest mb-3 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-yellow-400 animate-pulse"></span> Personal Bio</h3>
+                <p class="text-sm text-indigo-50 leading-relaxed font-medium">Professional Free Fire athlete. I dominate with speed and tactical precision. Catch me in the lobby if you can! ⚔️</p>
+            </div>
+        </div>
+
+        <footer class="mt-20 text-center px-6 pb-28 opacity-40">
+            <p class="text-[10px] text-indigo-300 tracking-[0.4em] uppercase font-bold">Saqib 242 Official • Est. 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        AOS.init({ duration: 800, once: true });
+        
+        function copyUID() {
+            const uidText = document.getElementById('uidText').innerText;
+            navigator.clipboard.writeText(uidText);
+            const toast = document.getElementById("toast");
+            toast.className = "show";
+            setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+        }
+
+        // Modal Functions
+        function openModal() {
+            document.getElementById('registerModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevent scroll
+        }
+
+        function closeModal() {
+            document.getElementById('registerModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scroll
+        }
+
+        function submitRegistration() {
+            const name = document.getElementById('regName').value;
+            const uid = document.getElementById('regUid').value;
+            const details = document.getElementById('regDetails').value;
+
+            if(!name || !uid) {
+                alert("Please enter Name and UID!");
+                return;
+            }
+
+            // Formatting Message for WhatsApp
+            const message = `🏆 *TOURNAMENT REGISTRATION*%0A%0A👤 *Name:* ${name}%0A🆔 *UID:* ${uid}%0A📝 *Details:* ${details}`;
+            
+            // Redirecting to WhatsApp
+            const waUrl = `https://wa.me/923478936242?text=${message}`;
+            window.open(waUrl, '_blank');
+            
+            // Close modal after redirection
+            closeModal();
+        }
+
+        // --- AUTO PROMO LOGIC ---
+        const promos = [
+            {
+                title: "Follow on TikTok",
+                sub: "@mr_saqib_242",
+                link: "https://www.tiktok.com/@mr_saqib_242?_r=1&_t=ZS-939cWYJd2M0",
+                icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.03 1.4-.2 2.81-.69 4.14-.52 1.45-1.44 2.81-2.73 3.69-1.28.91-2.84 1.4-4.41 1.4-1.54.03-3.1-.21-4.51-.87-1.44-.64-2.73-1.69-3.65-3.02-1-1.42-1.55-3.14-1.55-4.88 0-1.74.55-3.46 1.55-4.88.92-1.33 2.21-2.38 3.65-3.02 1.41-.66 2.97-.9 4.51-.87 1.15.03 2.3.24 3.37.69v4.32c-.7-.35-1.48-.54-2.27-.55-1.55-.03-3.04.56-4.04 1.76-1.01 1.2-1.42 2.77-1.13 4.3.29 1.53 1.28 2.88 2.68 3.55 1.38.65 3.03.55 4.31-.26 1.27-.81 1.95-2.31 2-3.8V.02z"/></svg>',
+                bg: "bg-black"
+            },
+            {
+                title: "Subscribe YouTube",
+                sub: "Saqib 242 Official",
+                link: "https://www.youtube.com/@Saqib242saqib",
+                icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 4-8 4z"/></svg>',
+                bg: "bg-red-600"
+            },
+            {
+                title: "Follow Instagram",
+                sub: "@mr_saqib242",
+                link: "https://www.instagram.com/mr_saqib242/?igsh=MXVzdnN3aXRzc2U5Zg%3D%3D",
+                icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.947.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.947-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.947 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>',
+                bg: "bg-pink-600"
+            },
+            {
+                title: "Visit Tech AI Zone",
+                sub: "Best AI Tech Website",
+                link: "https://techai.zone.id/",
+                icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm1 16.057v-3.057h2.994c-.059 1.143-.212 2.24-.456 3.279-.823-.12-1.674-.188-2.538-.222zm1.957 2.162c-.499 1.33-1.159 2.497-1.957 3.456v-3.62c.666.028 1.319.081 1.957.164zm-1.957-7.219v-3.015c.868-.034 1.721-.103 2.548-.224.238 1.027.389 2.111.446 3.239h-2.994zm0-5.014v-3.661c.806.969 1.471 2.15 1.971 3.496-.642.084-1.3.137-1.971.165zm-2 12.233v3.661c-.806-.969-1.471-2.15-1.971-3.496.642-.084 1.3-.137 1.971-.165zm0-5.019h-2.994c.059-1.143.212-2.24.456-3.279.823.12 1.674.188 2.538.222v3.057zm0-5.014c-.868.034-1.721.103-2.548.224-.238-1.027-.389-2.111-.446-3.239h2.994v3.015zm0 12.233c.868-.034 1.721-.103 2.548-.224.238 1.027.389 2.111.446 3.239h-2.994v-3.015zm-2-12.233c-.868.034-1.721.103-2.548.224-.238-1.027-.389-2.111-.446-3.239h2.994v3.015z"/></svg>',
+                bg: "bg-blue-600"
+            }
+        ];
+
+        let currentPromo = 0;
+        const popupEl = document.getElementById('promoPopup');
+        const iconEl = document.getElementById('promoIcon');
+        const titleEl = document.getElementById('promoTitle');
+        const subEl = document.getElementById('promoSub');
+        const linkEl = document.getElementById('promoLink');
+
+        function showNextPromo() {
+            const promo = promos[currentPromo];
+            
+            // Update Content
+            iconEl.innerHTML = promo.icon;
+            iconEl.className = `promo-icon ${promo.bg}`;
+            titleEl.innerText = promo.title;
+            subEl.innerText = promo.sub;
+            linkEl.href = promo.link;
+
+            // Show Popup
+            popupEl.classList.add('active');
+
+            // Hide after 5 seconds
+            setTimeout(() => {
+                popupEl.classList.remove('active');
+            }, 5000);
+
+            // Move to next
+            currentPromo = (currentPromo + 1) % promos.length;
+        }
+
+        function closePromo() {
+            popupEl.classList.remove('active');
+        }
+
+        // Start Loop every 10 seconds
+        setInterval(showNextPromo, 10000);
+
+    </script>
+</body>
+</html>
