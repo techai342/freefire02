@@ -468,6 +468,21 @@
         <button onclick="closePromo()" class="absolute top-2 right-2 text-white/30 hover:text-white">&times;</button>
     </div>
 
+    <!-- SUBSCRIBE REQUIREMENT MODAL (NEW) -->
+    <div id="subModal" class="modal-overlay" style="z-index: 10000;">
+        <div class="modal-content text-center border-red-600 shadow-[0_0_50px_rgba(220,38,38,0.5)]">
+            <div class="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 4-8 4z"/></svg>
+            </div>
+            <h2 class="ff-font text-3xl text-red-500 mb-2 uppercase tracking-wide">Subscribe First!</h2>
+            <p class="text-sm text-gray-300 font-bold mb-6">First Subscribe Official YouTube Channel Before Entry</p>
+            
+            <a onclick="confirmSubscribe()" href="https://www.youtube.com/@Saqib242saqib" target="_blank" class="block w-full py-4 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-widest transition-all shadow-lg text-center cursor-pointer no-underline">
+                Subscribe Now
+            </a>
+        </div>
+    </div>
+
     <!-- Registration Modal -->
     <div id="registerModal" class="modal-overlay">
         <div class="modal-content">
@@ -625,7 +640,7 @@
                             </ul>
                         </div>
                         <!-- Registration Trigger Button -->
-                        <button onclick="openModal()" class="w-full mt-6 btn-ff py-3 rounded-xl font-bold text-slate-900 uppercase tracking-widest flex items-center justify-center gap-2">
+                        <button onclick="checkRegistration()" class="w-full mt-6 btn-ff py-3 rounded-xl font-bold text-slate-900 uppercase tracking-widest flex items-center justify-center gap-2">
                             <span>Register Now</span>
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clip-rule="evenodd" /></svg>
                         </button>
@@ -661,7 +676,7 @@
                             </ul>
                         </div>
                         <!-- Registration Trigger Button -->
-                        <button onclick="openModal()" class="w-full mt-6 btn-ff py-3 rounded-xl font-bold text-slate-900 uppercase tracking-widest flex items-center justify-center gap-2">
+                        <button onclick="checkRegistration()" class="w-full mt-6 btn-ff py-3 rounded-xl font-bold text-slate-900 uppercase tracking-widest flex items-center justify-center gap-2">
                             <span>Register Now</span>
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clip-rule="evenodd" /></svg>
                         </button>
@@ -721,6 +736,26 @@
             const toast = document.getElementById("toast");
             toast.className = "show";
             setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+        }
+
+        // Logic to check Subscribe Status
+        function checkRegistration() {
+            // Check localstorage if user clicked subscribe button
+            if(localStorage.getItem('eman_subscribed') === 'true') {
+                openModal();
+            } else {
+                document.getElementById('subModal').style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function confirmSubscribe() {
+            localStorage.setItem('eman_subscribed', 'true');
+            // Give time for link to open, then close this modal and open registration
+            setTimeout(() => {
+                document.getElementById('subModal').style.display = 'none';
+                openModal();
+            }, 2000);
         }
 
         // Modal Functions
