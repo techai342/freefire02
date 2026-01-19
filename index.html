@@ -448,6 +448,73 @@
             text-transform: uppercase;
             display: inline-block;
         }
+        
+        /* New Panel Section */
+        .panel-card {
+            background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(20, 20, 20, 0.9));
+            border: 2px solid #facc15;
+            border-radius: 24px;
+            overflow: hidden;
+            margin-top: 40px;
+            box-shadow: 0 0 30px rgba(250, 204, 21, 0.2);
+        }
+        .panel-img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* New App Pro Mode Section */
+        .app-pro-section {
+            margin-top: 40px;
+        }
+        .app-pro-card {
+            background: rgba(0,0,0,0.8);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
+        }
+        .app-pro-card:hover {
+            border-color: #facc15;
+            transform: translateY(-5px);
+        }
+        .app-pro-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .app-pro-text {
+            padding: 20px;
+            text-align: center;
+        }
+        .app-pro-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #facc15;
+            margin-bottom: 10px;
+            font-family: 'Bebas Neue', cursive;
+            letter-spacing: 1px;
+        }
+        .app-pro-btn {
+            background: linear-gradient(45deg, #9333ea, #2563eb);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+            margin-top: 15px;
+        }
+        .app-pro-btn:hover {
+            background: linear-gradient(45deg, #2563eb, #9333ea);
+            box-shadow: 0 0 20px rgba(147, 51, 234, 0.5);
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -468,7 +535,7 @@
         <button onclick="closePromo()" class="absolute top-2 right-2 text-white/30 hover:text-white">&times;</button>
     </div>
 
-    <!-- SUBSCRIBE REQUIREMENT MODAL (NEW) -->
+    <!-- SUBSCRIBE REQUIREMENT MODAL -->
     <div id="subModal" class="modal-overlay" style="z-index: 10000;">
         <div class="modal-content text-center border-red-600 shadow-[0_0_50px_rgba(220,38,38,0.5)]">
             <div class="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce">
@@ -522,7 +589,7 @@
     <div class="w-full min-h-screen relative z-10">
         <!-- Cover Photo -->
         <div class="relative h-48 md:h-64 w-full overflow-hidden">
-            <img src="https://ik.imagekit.io/shaban/SHABAN-1768674422775_Uu0TqLuv3.jpg" class="w-full h-full object-cover">
+            <img src="https://ik.imagekit.io/shaban/SHABAN-1768755792487_-EbGplbcC.jpg" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
             <div class="cover-rgb-line"></div>
         </div>
@@ -531,7 +598,7 @@
             <!-- Profile Section -->
             <div class="profile-container flex flex-col items-center sm:items-end sm:flex-row sm:gap-6">
                 <div class="profile-img-wrapper" data-aos="zoom-in">
-                    <img src="https://ik.imagekit.io/shaban/SHABAN-1768674591256_kPMNURVzz.jpg" class="profile-img-circle">
+                    <img src="https://ik.imagekit.io/shaban/SHABAN-1768752635997_V6mgf6k5K.jpg" class="profile-img-circle">
                 </div>
 
                 <div class="mt-4 text-center sm:text-left flex-1" data-aos="fade-up">
@@ -552,7 +619,7 @@
                         <span id="uidText" class="font-mono font-bold text-yellow-400 text-lg">3458769</span>
                     </div>
                     <div class="p-3 bg-yellow-400/10 rounded-xl ml-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6a2 2 0 002-2V7a2 2 0 00-2-2h-6a2 2 0 00-2 2z" /></svg>
+                        <svg xmlns="http://www.w3.org2000/svg" class="h-5 w-5 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6a2 2 0 002-2V7a2 2 0 00-2-2h-6a2 2 0 00-2 2z" /></svg>
                     </div>
                 </div>
                 
@@ -681,6 +748,51 @@
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clip-rule="evenodd" /></svg>
                         </button>
                     </div>
+                </div>
+            </div>
+
+            <!-- NEW APP PRO MODE SECTION -->
+            <div class="app-pro-section mt-12" data-aos="fade-up">
+                <h3 class="text-xs font-bold text-indigo-300 uppercase tracking-[0.4em] mb-8 text-center">🔥 APP PRO MODE & ACCOUNTS 🔥</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- App Pro Mode Card -->
+                    <div class="app-pro-card">
+                        <img src="https://ik.imagekit.io/shaban/SHABAN-1768758303706_3WkOuMoSi.jpg" class="app-pro-image" alt="App Pro Mode">
+                        <div class="app-pro-text">
+                            <h4 class="app-pro-title">GET PRO MODE</h4>
+                            <p class="text-sm text-white/70 mb-4">Premium tools and settings for advanced gameplay</p>
+                            <button onclick="window.open('https://techai.zone.id/', '_blank')" class="app-pro-btn">
+                                GET PRO MODE
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- TikTok UK Account Card -->
+                    <div class="app-pro-card">
+                        <img src="https://ik.imagekit.io/shaban/SHABAN-1768758331813_lq1xTnLv7.jpg" class="app-pro-image" alt="TikTok UK Account">
+                        <div class="app-pro-text">
+                            <h4 class="app-pro-title">GET UK ACCOUNT</h4>
+                            <p class="text-sm text-white/70 mb-4">Premium TikTok UK accounts with exclusive features</p>
+                            <button onclick="window.open('https://techai.zone.id/', '_blank')" class="app-pro-btn">
+                                GET UK ACCOUNT
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL SECTION -->
+            <div class="mt-12" data-aos="fade-up">
+                <h3 class="text-xs font-bold text-indigo-300 uppercase tracking-[0.4em] mb-6 text-center">🔥 PREMIUM TOOLS 🔥</h3>
+                <div class="glass-card overflow-hidden">
+                     <img src="https://ik.imagekit.io/shaban/SHABAN-1768756872699_rVwiz47cT.jpg" class="w-full h-auto object-cover" alt="Panel">
+                     <div class="p-6 text-center">
+                         <h4 class="text-xl font-bold text-white mb-2">Free Fire Panel & Sensitivity</h4>
+                         <a href="https://freefire-five.vercel.app/" target="_blank" class="btn-ff inline-block w-full py-3 rounded-xl font-bold text-slate-900 uppercase tracking-widest mt-4">
+                            Get Best Free Fire Panel
+                         </a>
+                     </div>
                 </div>
             </div>
 
@@ -861,4 +973,3 @@
     </script>
 </body>
 </html>
-
